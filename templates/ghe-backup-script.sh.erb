@@ -1,0 +1,5 @@
+#!/bin/bash
+
+MAILTO=<%= @ghe_admin_email %>
+
+<%= @ghe_path %>/bin/ghe-backup -v 1>><%= @ghe_logs %>/backup.log 2>&1

@@ -6,6 +6,7 @@
 
 # prerequisites
 package 'git'
+package 'rsync'
 
 
 local_file = File.join( Chef::Config[:file_cache_path], node['github_backup_utils']['package']['filename'] )
@@ -71,6 +72,26 @@ end
 
 # setup scheduled backup
 
-# MAILTO=admin@example.com
-#
-# 0 0 * * * /opt/backup-utils/bin/ghe-backup -v 1>>/opt/backup-utils/backup.log 2>&1
+backup_script = File.join(node['github_backup_utils']['install']['config'], 'ghe-backup-scripts.sh')
+
+template backup_script do
+  source 'ghe-backup-script.sh.erb'
+  variables(
+    ghe_admin_email: node['github_backup_utils']['config']['admin_email'],
+    ghe_path: install_symlink,
+    ghe_logs: node['github_backup_utils']['logs']
+  )
+end
+
+file backup_script do
+  mode '0755'
+end
+
+# Install backup script in cron with schedule, backups calls chef-server-ctl
+# which requires root to execute.
+cron 'ghe-backup' do
+  minute  node['github_backup_utils']['backup']['minute']
+  hour    node['github_backup_utils']['backup']['hour']
+  command backup_script
+  user 'root'
+end

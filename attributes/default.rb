@@ -9,10 +9,15 @@ default['github_backup_utils']['group']               = 'github'
 
 default['github_backup_utils']['install']['config']   = '/etc/github-backup-utils'
 default['github_backup_utils']['install']['path']     = '/opt'
+default['github_backup_utils']['logs']                = '/var/log/ghe-backup-utils'
 
 # configuration details
 default['github_backup_utils']['config']['ghe_host']  = 'github.server'
 default['github_backup_utils']['config']['ghe_data_path']  = '/data'
 default['github_backup_utils']['config']['numbackups']  = '10'
+default['github_backup_utils']['config']['admin_email']  = 'admin@github.server'
 
 # schedule
+default['github_backup_utils']['backup']['minute']         = '15'
+default['github_backup_utils']['backup']['hour']           = '1'
+default['github_backup_utils']['backup']['day']            = '*'
