@@ -1,20 +1,15 @@
 name 'github_backup_utils'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Perficient DevOps'
+maintainer_email 'devops@perficient.com'
 license 'All Rights Reserved'
 description 'Installs/Configures github_backup_utils'
 long_description 'Installs/Configures github_backup_utils'
 version '0.1.0'
-chef_version '>= 13.0'
+chef_version '>= 14.0'
 
-# The `issues_url` points to the location where issues for this cookbook are
-# tracked.  A `View Issues` link will be displayed on this cookbook's page when
-# uploaded to a Supermarket.
-#
-# issues_url 'https://github.com/<insert_org_here>/github_backup_utils/issues'
+issues_url 'https://github.com/Perficient-DevOps/github_backup_utils/issues'
+source_url 'https://github.com/Perficient-DevOps/github_backup_utils'
 
-# The `source_url` points to the development repository for this cookbook.  A
-# `View Source` link will be displayed on this cookbook's page when uploaded to
-# a Supermarket.
-#
-# source_url 'https://github.com/<insert_org_here>/github_backup_utils'
+supports 'rhel'
+supports 'centos'
+supports 'amazon'
